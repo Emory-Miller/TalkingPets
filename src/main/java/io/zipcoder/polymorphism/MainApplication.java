@@ -10,22 +10,28 @@ public class MainApplication {
 
     static ArrayList<Pet> petsOwnedList = new ArrayList<>();
 
-    static ArrayList<String> stringList = new ArrayList<>();
-
     public static void main(String[] args) {
 
         int numPets = console.getIntInput("How many pets do you have?");
 
+        addPetsToListFromInput(numPets);
+
+        petSpeakFromList();
+
+    }
+
+    public static void addPetsToListFromInput(int numPets){
         for (int i = 0; i < numPets; i++) {
             String type = console.getStringInput("What kind of pet is it?");
             String name = console.getStringInput("Whats the name of your pet?");
             petsOwnedList.add(petFromInput(type, name));
         }
+    }
 
+    public static void petSpeakFromList(){
         for (Pet pets : petsOwnedList){
             console.println(pets.speak());
         }
-
     }
 
     public static Pet petFromInput(String type, String name) {
